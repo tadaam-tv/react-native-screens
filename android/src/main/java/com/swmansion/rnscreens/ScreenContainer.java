@@ -261,7 +261,11 @@ public class ScreenContainer<T extends ScreenFragment> extends ViewGroup {
     // attept to re-attach it to with a misconfigured fragment. This would result in a crash. To
     // avoid it we clear all the children here as we attach all the child fragments when the container
     // is reattached anyways.
-    removeAllViews();
+    try {
+      removeAllViews();
+    } catch (Exception ignore) {
+      // ignore any issues here.
+    }
   }
 
   @Override
